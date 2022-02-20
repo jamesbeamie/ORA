@@ -9,40 +9,32 @@ const App = () => {
   const [highestAverage, setHighestAverage] = useState({});
 
   const getBookings = () => {
-    console.log("imefika");
     const reqOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         bookings: bookingsArr,
       }),
-      // body: JSON.stringify({ title: "React POST Request Example444" }),
     };
-    console.log(bookingsArr);
     fetch("/bookings", reqOptions)
       .then((response) => response.json())
       .then((data) => {
-        // console.log("data.success", data.success);
         setBookingAvailability(data);
-      }); //setBookingAvailability(data)
+      });
   };
   const getHieghestAverage = () => {
-    console.log("imefika");
     const reqOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         elements: elementsArr,
       }),
-      // body: JSON.stringify({ title: "React POST Request Example444" }),
     };
-    // console.log(bookingsArr);
     fetch("/highest-average", reqOptions)
       .then((response) => response.json())
       .then((data) => {
-        console.log("data.success", data.result);
         setHighestAverage(data);
-      }); //setBookingAvailability(data)
+      });
   };
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
@@ -298,7 +290,6 @@ const App = () => {
             }}
           >
             <p>Bike is available for all bookings</p>
-            {/* <p style={{ color: "red" }}>{bookingAvailability.success}</p> */}
             <>
               {bookingAvailability.success === true ? (
                 <span
@@ -311,7 +302,6 @@ const App = () => {
                     paddingRight: 46,
                     height: 26,
                     borderRadius: 4,
-                    // marginRight: 10,
                   }}
                 >
                   True
@@ -327,12 +317,10 @@ const App = () => {
                     paddingRight: 46,
                     height: 26,
                     borderRadius: 4,
-                    // marginRight: 10,
                   }}
                 >
                   False
                 </span>
-                // <p style={{ color: "#FFC300" }}>false</p>
               )}
             </>
           </div>
